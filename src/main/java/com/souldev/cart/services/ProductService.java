@@ -44,4 +44,14 @@ public class ProductService {
    public List<Product> getBestPriceProducts(){
         return this.productRepository.findFirst4ByOrderByPriceAsc();
    }
+
+    @Transactional
+    public List<Product> findByTitle(String q) throws Exception{
+        try{
+            List<Product> entities = this.productRepository.findByTitle(q);
+            return entities;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
 }

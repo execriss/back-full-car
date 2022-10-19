@@ -6,6 +6,7 @@ import com.souldev.cart.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -55,5 +56,18 @@ public class ProductController {
             return new ResponseEntity<>(new Message("Revise los campos"),HttpStatus.BAD_REQUEST);
         this.productService.saveProduct(product);
         return new ResponseEntity<>(new Message("Actualizado correctamente"),HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/busqueda")
+    public String busquedaProduct(Model model, @RequestParam(value ="query",required = false)String q){
+        try {
+            List<Product> productos = this.productService.findByTitle(q);
+            model.addAttribute("product", productos);
+            model.addAttribute("resultado",q);
+            return "views/busqueda";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "error";
+        }
     }
 }
