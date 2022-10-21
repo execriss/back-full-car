@@ -6,9 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -33,8 +31,10 @@ public class Product {
     private String description;
     @NotBlank @NotNull
     @Getter @Setter
-    private String category;
-    @NotBlank @NotNull
-    @Getter @Setter
     private String image;
+
+    @NotNull(message="Es requerida la categoria")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "fk_categoria", nullable = false)
+    private Category category;
 }
