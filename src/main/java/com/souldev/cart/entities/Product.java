@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.stereotype.Service;
 
 import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
@@ -32,6 +33,12 @@ public class Product {
     @NotBlank @NotNull
     @Getter @Setter
     private String image;
+    @NotBlank @NotNull
+    @Getter @Setter
+    private String marca;
+    @NotBlank @NotNull
+    @Getter @Setter
+    private boolean importado;
 
     @NotNull(message="Es requerida la categoria")
     @ManyToOne(fetch = FetchType.EAGER)

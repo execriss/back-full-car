@@ -16,155 +16,131 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`fullcar` /*!40100 DEFAULT CHARACTER SET
 
 USE `fullcar`;
 
-/*Table structure for table `authorities_users` */
+/*Table structure for table `categorias` */
 
-DROP TABLE IF EXISTS `authorities_users`;
+DROP TABLE IF EXISTS `categorias`;
 
-CREATE TABLE `authorities_users` (
-  `user_id` bigint(20) NOT NULL,
-  `authority_id` bigint(20) NOT NULL,
-  PRIMARY KEY (`user_id`,`authority_id`),
-  KEY `FK1hk335nyb5icwqy64y2mhov2v` (`authority_id`),
-  CONSTRAINT `FK1hk335nyb5icwqy64y2mhov2v` FOREIGN KEY (`authority_id`) REFERENCES `authority` (`id`),
-  CONSTRAINT `FKc4eanbpu2l39uxbju4u2fm2f1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-/*Data for the table `authorities_users` */
-
-insert  into `authorities_users`(`user_id`,`authority_id`) values (1,1),(1,2),(2,2);
-
-/*Table structure for table `authority` */
-
-DROP TABLE IF EXISTS `authority`;
-
-CREATE TABLE `authority` (
-  `id` bigint(20) NOT NULL,
-  `authority` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-/*Data for the table `authority` */
-
-insert  into `authority`(`id`,`authority`) values (1,'ROLE_ADMIN'),(2,'ROLE_USER');
-
-/*Table structure for table `carrito` */
-
-DROP TABLE IF EXISTS `carrito`;
-
-CREATE TABLE `carrito` (
-  `pk` bigint(20) NOT NULL,
-  `fecha` datetime DEFAULT NULL,
-  `total` double DEFAULT NULL,
-  `user_id` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`pk`),
-  KEY `FK9d06e5wu8grcqjes0mf2ekn7c` (`user_id`),
-  CONSTRAINT `FK9d06e5wu8grcqjes0mf2ekn7c` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-/*Data for the table `carrito` */
-
-/*Table structure for table `categoria` */
-
-DROP TABLE IF EXISTS `categoria`;
-
-CREATE TABLE `categoria` (
+CREATE TABLE `categorias` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `accesorios` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `activo` bit(1) NOT NULL,
-  `nombre` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `repuestos_originales` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `respuestos_genericos` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `nombre` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-/*Data for the table `categoria` */
+/*Data for the table `categorias` */
 
-/*Table structure for table `detalle_compra` */
+/*Table structure for table `detail` */
 
-DROP TABLE IF EXISTS `detalle_compra`;
+DROP TABLE IF EXISTS `detail`;
 
-CREATE TABLE `detalle_compra` (
-  `pk` bigint(20) NOT NULL,
-  `cantidad` bigint(20) DEFAULT NULL,
-  `precio` double DEFAULT NULL,
-  `total` double DEFAULT NULL,
-  `carrito_pk` bigint(20) DEFAULT NULL,
-  `producto_id` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`pk`),
-  KEY `FKmn1o4m4ncelvdal3tvou6alg1` (`carrito_pk`),
-  KEY `FKr6qgt3x215hdq7hmp32ui755t` (`producto_id`),
-  CONSTRAINT `FKmn1o4m4ncelvdal3tvou6alg1` FOREIGN KEY (`carrito_pk`) REFERENCES `carrito` (`pk`),
-  CONSTRAINT `FKr6qgt3x215hdq7hmp32ui755t` FOREIGN KEY (`producto_id`) REFERENCES `product` (`id`)
+CREATE TABLE `detail` (
+  `id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `amount` int(11) NOT NULL,
+  `product_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `sale_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKnogkshb9tv6mtc9em7efogdni` (`product_id`),
+  KEY `FK11itjaoxevf67aa0370vyoj95` (`sale_id`),
+  CONSTRAINT `FK11itjaoxevf67aa0370vyoj95` FOREIGN KEY (`sale_id`) REFERENCES `sale` (`id`),
+  CONSTRAINT `FKnogkshb9tv6mtc9em7efogdni` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-/*Data for the table `detalle_compra` */
-
-/*Table structure for table `hibernate_sequence` */
-
-DROP TABLE IF EXISTS `hibernate_sequence`;
-
-CREATE TABLE `hibernate_sequence` (
-  `next_val` bigint(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-/*Data for the table `hibernate_sequence` */
-
-insert  into `hibernate_sequence`(`next_val`) values (1);
+/*Data for the table `detail` */
 
 /*Table structure for table `product` */
 
 DROP TABLE IF EXISTS `product`;
 
 CREATE TABLE `product` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `cantidad` bigint(20) DEFAULT NULL,
-  `descripcion` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `importado` bit(1) DEFAULT NULL,
-  `marca` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `modelo` int(11) DEFAULT NULL,
-  `nombre` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `precio` float DEFAULT NULL,
+  `id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `importado` bit(1) NOT NULL,
+  `marca` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `price` double NOT NULL,
   `fk_categoria` bigint(20) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `FK6i0ille9qx9phe1kwk6swwes` (`fk_categoria`),
-  CONSTRAINT `FK6i0ille9qx9phe1kwk6swwes` FOREIGN KEY (`fk_categoria`) REFERENCES `categoria` (`id`)
+  KEY `FKi97nochdfvosg1a7m8djtq71w` (`fk_categoria`),
+  CONSTRAINT `FKi97nochdfvosg1a7m8djtq71w` FOREIGN KEY (`fk_categoria`) REFERENCES `categorias` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `product` */
 
-/*Table structure for table `user` */
+/*Table structure for table `role` */
 
-DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `role`;
 
-CREATE TABLE `user` (
-  `id` bigint(20) NOT NULL,
-  `apellido` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `dni` int(11) DEFAULT NULL,
-  `enabled` bit(1) DEFAULT NULL,
-  `nombre` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `username` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+CREATE TABLE `role` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `role_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-/*Data for the table `user` */
+/*Data for the table `role` */
 
-insert  into `user`(`id`,`apellido`,`dni`,`enabled`,`nombre`,`password`,`username`) values (1,NULL,NULL,'',NULL,'$2a$04$rXrKbKI/ohp/SExaKwoaYemAMmxRIdbUs263Nt/x9HwuVg4.sqQHK','admin'),(2,NULL,NULL,'',NULL,'$2a$04$rXrKbKI/ohp/SExaKwoaYemAMmxRIdbUs263Nt/x9HwuVg4.sqQHK','user');
+/*Table structure for table `sale` */
 
-/*Table structure for table `user_producto` */
+DROP TABLE IF EXISTS `sale`;
 
-DROP TABLE IF EXISTS `user_producto`;
-
-CREATE TABLE `user_producto` (
-  `user_id` bigint(20) NOT NULL,
-  `product_id` bigint(20) NOT NULL,
-  UNIQUE KEY `UK_9bgn236j7xuwcricwtrnrwl29` (`product_id`),
-  KEY `FKmsscv582g60yykbdg2td7xj8y` (`user_id`),
-  CONSTRAINT `FK44e30v7sgbikf17o7i7rbhdq1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`),
-  CONSTRAINT `FKmsscv582g60yykbdg2td7xj8y` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
+CREATE TABLE `sale` (
+  `id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `date` date NOT NULL,
+  `total` double NOT NULL,
+  `client_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKot5vkfc3sih2kdlyhah2yrgi5` (`client_id`),
+  CONSTRAINT `FKot5vkfc3sih2kdlyhah2yrgi5` FOREIGN KEY (`client_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-/*Data for the table `user_producto` */
+/*Data for the table `sale` */
+
+/*Table structure for table `shopping_cart` */
+
+DROP TABLE IF EXISTS `shopping_cart`;
+
+CREATE TABLE `shopping_cart` (
+  `id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `amount` int(11) NOT NULL,
+  `client_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `product_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKu4ldicofo0jsb7chiurq8sta` (`client_id`),
+  KEY `FKerqg5bwr2tdlwabwdn7r4n2xo` (`product_id`),
+  CONSTRAINT `FKerqg5bwr2tdlwabwdn7r4n2xo` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`),
+  CONSTRAINT `FKu4ldicofo0jsb7chiurq8sta` FOREIGN KEY (`client_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `shopping_cart` */
+
+/*Table structure for table `user_role` */
+
+DROP TABLE IF EXISTS `user_role`;
+
+CREATE TABLE `user_role` (
+  `user_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `role_id` int(11) NOT NULL,
+  PRIMARY KEY (`user_id`,`role_id`),
+  KEY `FKa68196081fvovjhkek5m97n3y` (`role_id`),
+  CONSTRAINT `FKa68196081fvovjhkek5m97n3y` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`),
+  CONSTRAINT `FKj345gk1bovqvfame88rcx7yyx` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `user_role` */
+
+/*Table structure for table `users` */
+
+DROP TABLE IF EXISTS `users`;
+
+CREATE TABLE `users` (
+  `id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `user_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK_k8d0f2n7n88w1a16yhua64onx` (`user_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `users` */
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
