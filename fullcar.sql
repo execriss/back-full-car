@@ -74,9 +74,11 @@ CREATE TABLE `role` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `role_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `role` */
+
+insert  into `role`(`id`,`role_name`) values (1,'ROLE_USER'),(2,'ROLE_ADMIN');
 
 /*Table structure for table `sale` */
 
@@ -127,6 +129,8 @@ CREATE TABLE `user_role` (
 
 /*Data for the table `user_role` */
 
+insert  into `user_role`(`user_id`,`role_id`) values ('0233eedc-e62b-4175-98ef-4e069953bdfe',2);
+
 /*Table structure for table `users` */
 
 DROP TABLE IF EXISTS `users`;
@@ -137,10 +141,13 @@ CREATE TABLE `users` (
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `user_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `UK_k8d0f2n7n88w1a16yhua64onx` (`user_name`)
+  UNIQUE KEY `UK_k8d0f2n7n88w1a16yhua64onx` (`user_name`),
+  UNIQUE KEY `UK_sx468g52bpetvlad2j9y0lptc` (`user_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `users` */
+
+insert  into `users`(`id`,`email`,`password`,`user_name`) values ('0233eedc-e62b-4175-98ef-4e069953bdfe','admin@gmail.com','$2a$10$UVc6xn8Zzj8hcbmLCQUNbuiz/0DUXqYiqda3O6VAfSFvMvkvxHXE2','Admin');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
