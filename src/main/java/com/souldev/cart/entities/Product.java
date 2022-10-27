@@ -32,6 +32,9 @@ public class Product {
     private String description;
     @NotBlank @NotNull
     @Getter @Setter
+    private String category;
+    @NotBlank @NotNull
+    @Getter @Setter
     private String image;
     @NotBlank @NotNull
     @Getter @Setter
@@ -40,8 +43,5 @@ public class Product {
     @Getter @Setter
     private boolean importado;
 
-    @NotNull(message="Es requerida la categoria")
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "fk_categoria", nullable = false)
-    private Category category;
+
 }

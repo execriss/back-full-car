@@ -52,19 +52,19 @@ DROP TABLE IF EXISTS `product`;
 
 CREATE TABLE `product` (
   `id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `category` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `importado` bit(1) NOT NULL,
   `marca` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `price` double NOT NULL,
-  `fk_categoria` bigint(20) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FKi97nochdfvosg1a7m8djtq71w` (`fk_categoria`),
-  CONSTRAINT `FKi97nochdfvosg1a7m8djtq71w` FOREIGN KEY (`fk_categoria`) REFERENCES `categorias` (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `product` */
+
+insert  into `product`(`id`,`category`,`description`,`image`,`importado`,`marca`,`name`,`price`) values ('','Lubricantes','Lubricante Sintetica grado 2','https://www.lubricentrojm.cl/wp-content/uploads/2018/12/Shell-Ultra-Professional-5W-30-4L-DPF.jpeg','','Shell','Helix Ultra 5w-30',5000);
 
 /*Table structure for table `role` */
 
@@ -129,7 +129,7 @@ CREATE TABLE `user_role` (
 
 /*Data for the table `user_role` */
 
-insert  into `user_role`(`user_id`,`role_id`) values ('0233eedc-e62b-4175-98ef-4e069953bdfe',2);
+insert  into `user_role`(`user_id`,`role_id`) values ('088353e3-1be4-4195-abd3-8583df50f858',2);
 
 /*Table structure for table `users` */
 
@@ -141,13 +141,12 @@ CREATE TABLE `users` (
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `user_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `UK_k8d0f2n7n88w1a16yhua64onx` (`user_name`),
-  UNIQUE KEY `UK_sx468g52bpetvlad2j9y0lptc` (`user_name`)
+  UNIQUE KEY `UK_k8d0f2n7n88w1a16yhua64onx` (`user_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `users` */
 
-insert  into `users`(`id`,`email`,`password`,`user_name`) values ('0233eedc-e62b-4175-98ef-4e069953bdfe','admin@gmail.com','$2a$10$UVc6xn8Zzj8hcbmLCQUNbuiz/0DUXqYiqda3O6VAfSFvMvkvxHXE2','Admin');
+insert  into `users`(`id`,`email`,`password`,`user_name`) values ('088353e3-1be4-4195-abd3-8583df50f858','admin@gmail.com','$2a$10$GyYfTtv2/xwn4dI7xL9U9epxNzvqLiwhUXUIRZQOPSU7nknEZlUWe','Admin');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
