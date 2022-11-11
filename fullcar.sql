@@ -2,7 +2,8 @@
 SQLyog Ultimate v11.11 (64 bit)
 MySQL - 8.0.18 : Database - fullcar
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -64,7 +65,26 @@ CREATE TABLE `product` (
 
 /*Data for the table `product` */
 
-insert  into `product`(`id`,`category`,`description`,`image`,`importado`,`marca`,`name`,`price`) values ('','Lubricantes','Lubricante Sintetica grado 2','https://www.lubricentrojm.cl/wp-content/uploads/2018/12/Shell-Ultra-Professional-5W-30-4L-DPF.jpeg','','Shell','Helix Ultra 5w-30',5000);
+insert  into `product`(`id`,`category`,`description`,`image`,`importado`,`marca`,`name`,`price`) values ('2','Lubricantes','Aceite De Motor Mobil 4 Litros 15w40 Mineral Mobil Delvac Su','https://http2.mlstatic.com/D_NQ_NP_989147-MLA49826543872_052022-O.webp','','Mobil','Mobil Delvac',5300);
+insert  into `product`(`id`,`category`,`description`,`image`,`importado`,`marca`,`name`,`price`) values ('3','Lubricantes','Aceite De Motor Mobil 3.78 Litros 5w50 Sintetico Mobil 1 Fs','https://http2.mlstatic.com/D_NQ_NP_794637-MLA49826532306_052022-O.webp','','Mobil','Mobil 1',20700);
+insert  into `product`(`id`,`category`,`description`,`image`,`importado`,`marca`,`name`,`price`) values ('4','Lubricantes','Aceite Puma 2t Jaso Fc/api Tc X1l 4202088','https://http2.mlstatic.com/D_NQ_NP_632636-MLA50727323340_072022-O.webp','','Puma','Puma 2t',1200);
+insert  into `product`(`id`,`category`,`description`,`image`,`importado`,`marca`,`name`,`price`) values ('5','Lubricantes','Aceite De Motor Mobil 200 Litros 10w40 Semisintetico Mobil S','https://http2.mlstatic.com/D_NQ_NP_901584-MLA49826538706_052022-O.webp','','Mobil','Mobil 200 Litros',223000);
+insert  into `product`(`id`,`category`,`description`,`image`,`importado`,`marca`,`name`,`price`) values ('6','Lubricantes','Aceite Petronas Selenia Turbo Diesel 15w40 X4l Api Ci-4 Sl S','https://http2.mlstatic.com/D_NQ_NP_842585-MLA51787787348_102022-O.webp','','Petronas','Petronas Selenia Turbo Diesel',9500);
+insert  into `product`(`id`,`category`,`description`,`image`,`importado`,`marca`,`name`,`price`) values ('7','Tren Delantero','Amortiguador Fiat Fiorino 1.3 1.3 Fire Pack 06/07 Fric-rot','https://http2.mlstatic.com/D_NQ_NP_975160-MLA51155316992_082022-O.webp','','Fric-rot','Amortiguador Fiat Fiorino 1.3',19200);
+insert  into `product`(`id`,`category`,`description`,`image`,`importado`,`marca`,`name`,`price`) values ('8','Tren Delantero','Amortiguador Volkswagen Gol 1.6 1.6 Gl 92/94 Fric-rot','https://http2.mlstatic.com/D_NQ_NP_924463-MLA51901320234_102022-O.webp','','Fric-rot','Amortiguador Volkswagen Gol 1.6',10700);
+insert  into `product`(`id`,`category`,`description`,`image`,`importado`,`marca`,`name`,`price`) values ('9','Tren Delantero','Rodamiento De Rueda Delantero Skf Chevrolet Agile 2009-2015','https://http2.mlstatic.com/D_NQ_NP_790676-MLA49910820251_052022-O.webp','','Skf','Skf Chevrolet Agile 2009-2015',8100);
+insert  into `product`(`id`,`category`,`description`,`image`,`importado`,`marca`,`name`,`price`) values ('10','Tren Delantero','Extremo De Direccion Fiat Grand Siena 12/21','https://http2.mlstatic.com/D_NQ_NP_819893-MLA51559998186_092022-O.webp','','Skf','Extremo De Direccion Fiat Grand Siena 12/21',4600);
+insert  into `product`(`id`,`category`,`description`,`image`,`importado`,`marca`,`name`,`price`) values ('11','Tren Delantero','Amortiguador Delantero Renault Sandero 1.6 1.6 Expression 90','https://http2.mlstatic.com/D_NQ_NP_765896-MLA51576620713_092022-O.webp','','Expression','Amortiguador Delantero Renault Sandero 1.6 ',15500);
+insert  into `product`(`id`,`category`,`description`,`image`,`importado`,`marca`,`name`,`price`) values ('12','Motor','Kit De Distribucion Skf Volkswagen Gol Country 1.6 L 1997-20','https://http2.mlstatic.com/D_NQ_NP_988790-MLA51653836885_092022-O.webp','','Skf','Kit De Distribucion Skf Volkswagen Gol Country 1.6',6100);
+insert  into `product`(`id`,`category`,`description`,`image`,`importado`,`marca`,`name`,`price`) values ('13','Motor','Radiador De Motor Eurorepar Fiat Uno 1.6 L Tipo R 97/99','https://http2.mlstatic.com/D_NQ_NP_610580-MLA51864434493_102022-O.webp','','Eurorepar','Radiador De Motor Eurorepar Fiat Uno 1.6',6100);
+insert  into `product`(`id`,`category`,`description`,`image`,`importado`,`marca`,`name`,`price`) values ('14','Motor','Polea Distribucion Gates T42089 Clio Express Kangoo F8q T420','https://http2.mlstatic.com/D_NQ_NP_962017-MLA49795629156_042022-O.webp','','Gates','Polea Distribucion Gates T42089 Clio Express',7300);
+insert  into `product`(`id`,`category`,`description`,`image`,`importado`,`marca`,`name`,`price`) values ('15','Motor','Tapas Termostaticas Renault Express 1.6 96/01','https://http2.mlstatic.com/D_NQ_NP_820419-MLA51094799941_082022-O.webp','','Gates','Tapas Termostaticas Renault',600);
+insert  into `product`(`id`,`category`,`description`,`image`,`importado`,`marca`,`name`,`price`) values ('16','Motor','Tapa Aceite Florio Palio Siena Idea Punto Strada Adventure 2','https://http2.mlstatic.com/D_NQ_NP_747831-MLA50512406665_062022-O.webp','','Skf','Tapa Aceite Florio Palio',600);
+insert  into `product`(`id`,`category`,`description`,`image`,`importado`,`marca`,`name`,`price`) values ('17','Iluminacion','Óptica Fitam Peugeot 505 82 83 84 85 86 87 88 89 1990 1991 I','https://http2.mlstatic.com/D_NQ_NP_861767-MLA50581189368_072022-O.webp','','Optilux','Óptica Fitam Peugeot',11600);
+insert  into `product`(`id`,`category`,`description`,`image`,`importado`,`marca`,`name`,`price`) values ('18','Iluminacion','Faro Trasero (189x140) Ambar Rojo Cristal Universal 00/17','https://http2.mlstatic.com/D_NQ_NP_938080-MLA51931878517_102022-O.webp','','Optilux','Faro Trasero (189x140)',2500);
+insert  into `product`(`id`,`category`,`description`,`image`,`importado`,`marca`,`name`,`price`) values ('19','Iluminacion','Faro Trasero Izquierdo Base Roja Vw Gol 1999 2000 2002 2005','https://http2.mlstatic.com/D_NQ_NP_992666-MLA49316340892_032022-O.webp','','Optilux','Faro Trasero Izquierdo Base Roja Vw Gol ',5600);
+insert  into `product`(`id`,`category`,`description`,`image`,`importado`,`marca`,`name`,`price`) values ('20','Iluminacion','Óptica Fitam Fiat 147 Spazio Vivace Fiorino 85 Hasta 97 Der','https://http2.mlstatic.com/D_NQ_NP_724362-MLA49450231784_032022-O.webp','','Optilux','Óptica Fitam Fiat 147',6200);
+insert  into `product`(`id`,`category`,`description`,`image`,`importado`,`marca`,`name`,`price`) values ('21','Iluminacion','Faro Delantero Izquieda Volkswagen 26260 Constellation 07/15','https://http2.mlstatic.com/D_NQ_NP_941148-MLA51472402406_092022-O.webp','','Optilux','Faro Delantero Izquieda Volkswagen',12500);
 
 /*Table structure for table `role` */
 
