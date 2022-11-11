@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class JwtEntryPoint implements AuthenticationEntryPoint {
+
+    //este método controla el error que devuelve el backend cuando un usuario sin permisos intenta realizar una accion
     @Override
     public void commence(HttpServletRequest req, HttpServletResponse res, AuthenticationException e) throws IOException {
         res.sendError(HttpServletResponse.SC_UNAUTHORIZED, "No autorizado");

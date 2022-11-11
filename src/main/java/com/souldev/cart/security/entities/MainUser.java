@@ -14,7 +14,8 @@ public class MainUser implements UserDetails {
     private String password;
     private Collection<? extends GrantedAuthority> authorities;
 
-
+//esta clase nos permite identificar la autoridad en este caso a travez del rol
+    //esta nos permite restringir ciertas acciones de acuerdo a cada rol.
     public MainUser(String userName, String email, String password,
             Collection<? extends GrantedAuthority> authorities) {
         this.userName = userName;

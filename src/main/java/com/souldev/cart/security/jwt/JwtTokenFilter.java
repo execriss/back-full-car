@@ -46,7 +46,8 @@ public class JwtTokenFilter extends OncePerRequestFilter  {
         filterChain.doFilter(req, res);
     }
 
-
+//vamos a crear un método que intercepte las peticiones http y les añada el token
+    //debemos quitarle la palabra Bearer del header y validarlo
     private String getToken(HttpServletRequest request){
         Cookie cookie = WebUtils.getCookie(request, cookieName);
         return cookie != null ? cookie.getValue():null;
