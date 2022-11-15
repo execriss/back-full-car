@@ -39,9 +39,7 @@ public class Product {
     @NotBlank @NotNull
     @Getter @Setter
     private String marca;
-    @NotBlank @NotNull
-    @Getter @Setter
-    private boolean importado;
+
 
 
 }
